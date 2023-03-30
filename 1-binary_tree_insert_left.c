@@ -1,50 +1,32 @@
-#include <unistd.h>
+#include "binary_trees.h"
 
-int _putchar (int char);
-int  my_getline(char *buf, size_t byte);
+/**
+ * binary_tree_insert_left - A function that inserts a node as the left-child.
+ * @parent: A pointer to a node to insert the left child in.
+ * @value: The value to store in the node.
+ * Return: A pointer to to created node or NULL on failure.
+ */
+binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
+{
+	binary_tree_t *new_node = NULL;
 
-int main(int argc, char *argv[])
-{
-	while (1)
+	if (parent == NULL || value == '\0')
+		return (NULL);
+
+	new_node = malloc(sizeof(binary_tree_t));
+	if (new_node == NULL)
+		return (NULL);
+
+	new_node->n = value;
+	new_node->parent = parent;
+	new_node->left = NULL;
+	new_node->right = NULL;
+
+	if (parent->left != NULL)
 	{
-	printf("Offering_Emmanuel$");
-		
-	char **line_get = my_getline();
-	char **str_split = parse(line_get);
-	while(tokens[0] != NULL)
-	{
-		void executeCMD (tokens);
+		new_node->left = parent->left;
+		new_node->left->parent = new_node;
 	}
-	return (0);
-}
- 
-int _putchar(char c)
-{
-	return (write(1,&c,1));
-}
-	
-			
-	void executeCMD (tokens)
-	{
-		int i;
-		
-		if arg[0] == NULL;
-		{
-			perror("No args");
-		}
-		
-		if arg[1] == NULL;
-		{
-			return(0);
-		}
-		
-		for(i = 0; i < num_built; i++)
-		{
-			if (strcmp(tokens[0],built-in[i].name) == 0)
-			{
-				built-in[i].funct(args);
-				return;
-			}
-			return (executeCMD);
-	}
+	parent->left = new_node;
+	return (new_node);
 }
