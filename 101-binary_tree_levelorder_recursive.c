@@ -1,10 +1,5 @@
 #include "binary_trees.h"
 
-/**
- * struct node_s - singly linked list
- * @node: const binary tree node
- * @next: points to the next node
- */
 
 ll *append(ll *head, const binary_tree_t *btnode);
 void free_list(ll *head);
